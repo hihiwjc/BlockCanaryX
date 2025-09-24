@@ -60,9 +60,13 @@ internal object BlockCanaryInternal {
         }
         this._application = app
         this._blockCanaryConfig = config
+        if (config.blockCanaryLogPath == null) {
+            val cacheDir = application.externalCacheDir ?: application.cacheDir
+            config.blockCanaryLogPath = cacheDir.absolutePath + File.separator + "blockCanary"
+        }
         this.blockInfoRepository = BlockInfoRepositoryImpl(
             application, Executors.newSingleThreadExecutor(),
-            File(application.cacheDir, "blockCanary")
+            File(config.blockCanaryLogPath)
         )
         initUICore()
         start()

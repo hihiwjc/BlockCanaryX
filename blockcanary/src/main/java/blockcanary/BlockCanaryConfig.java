@@ -29,6 +29,10 @@ public class BlockCanaryConfig {
      * 在Debugger的时候是否进行卡顿检测
      */
     private boolean detectWhenDebuggerConnected;
+    /**
+     * 卡顿日志保存路径
+     */
+    private String blockCanaryLogPath;
 
     private BlockCanaryConfig(Builder builder) {
         setBlockThresholdTime(builder.blockThresholdTime);
@@ -37,6 +41,7 @@ public class BlockCanaryConfig {
         setMaxStackSampleCacheCount(builder.maxStackSampleCacheCount);
         setMaxCacheBlockingFiles(builder.maxCacheBlockingFiles);
         setDetectWhenDebuggerConnected(builder.detectWhenDebuggerConnected);
+        setBlockCanaryLogPath(builder.blockCanaryLogPath);
     }
 
     public static Builder newBuilder() {
@@ -52,6 +57,14 @@ public class BlockCanaryConfig {
         builder.maxCacheBlockingFiles = copy.getMaxCacheBlockingFiles();
         builder.detectWhenDebuggerConnected = copy.isDetectWhenDebuggerConnected();
         return builder;
+    }
+
+    public String getBlockCanaryLogPath() {
+        return blockCanaryLogPath;
+    }
+
+    public void setBlockCanaryLogPath(String blockCanaryLogPath) {
+        this.blockCanaryLogPath = blockCanaryLogPath;
     }
 
     public int getBlockThresholdTime() {
@@ -110,6 +123,7 @@ public class BlockCanaryConfig {
         private int maxStackSampleCacheCount=110;
         private int maxCacheBlockingFiles = 50;
         private boolean detectWhenDebuggerConnected = false;
+        private String blockCanaryLogPath;
 
         private Builder() {
         }

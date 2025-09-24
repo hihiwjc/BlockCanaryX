@@ -3,7 +3,7 @@ package blockcanary
 import android.app.Application
 import android.content.Context
 import androidx.startup.Initializer
-import blockcanary.R;
+import blockcanary.core.R
 
 internal class BlockCanaryStartupInitializer : Initializer<BlockCanaryStartupInitializer> {
 

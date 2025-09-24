@@ -1,16 +1,16 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id "com.vanniktech.maven.publish"
 }
 
 android {
-    compileSdkVersion 31
-
+    compileSdkVersion 33
+    namespace "blockcanary.core"
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 30
+        targetSdkVersion 33
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
 
@@ -39,9 +39,5 @@ dependencies {
     implementation project(path: ':stacksampler')
     implementation project(path: ':flamegraph-ui')
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
 
-apply from: this.rootProject.file('gradle/publish.gradle')
